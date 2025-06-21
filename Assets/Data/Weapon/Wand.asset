@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Wand
   Description: A
-  Icon: {fileID: 0}
+  Icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   Damage: 5
   FireRate: 1
   ProjectileCount: 1
   ProjectileSpeed: 10
-  ProjectilePrefab: {fileID: 0}
+  ProjectilePrefab: {fileID: 2044460159527734143, guid: 0c0a685e0716a844fb81e4d6234ad68e, type: 3}
