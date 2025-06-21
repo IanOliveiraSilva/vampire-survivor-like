@@ -5,6 +5,7 @@ namespace Survivor.Enemies
 {
     public class EnemyController : MonoBehaviour
     {
+        [SerializeField]
         private EnemyStatsSO enemyStats;
 
         private EnemyMove enemyMove;
