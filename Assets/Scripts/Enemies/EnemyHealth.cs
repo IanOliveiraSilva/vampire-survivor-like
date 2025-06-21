@@ -18,7 +18,7 @@ namespace Survivor.Enemies
             currentHealth -= amount;
             Debug.Log($"{gameObject.name} took {amount} damage. Health is now {currentHealth}");
 
-            if( currentHealth < 0)
+            if( currentHealth <= 0)
             {
                 Die();
             }

@@ -7,7 +7,9 @@ namespace Survivor.Weapons
     public class WeaponController : MonoBehaviour
     {
         [Header("Weapons")]
+        [SerializeField]
         private List<ActiveWeapon> activeWeapons;
+        [SerializeField]
         private List<WeaponStatsSO> startingWeapons;
 
         private void Awake()

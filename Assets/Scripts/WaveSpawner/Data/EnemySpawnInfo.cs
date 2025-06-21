@@ -1,9 +1,9 @@
 using Survivor.Enemies.Data;
 using System;
 
-namespace Survivor.Spawning.Data
+namespace Survivor.WaveSpawner.Data
 {
-
+    [System.Serializable]
     public class EnemySpawnInfo
     {
         public EnemyStatsSO enemyStats;
