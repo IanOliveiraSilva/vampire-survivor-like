@@ -9,11 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f97d90ffe1cddd94290c9800b47aff12, type: 3}
-  m_Name: Wave 1
+  m_Script: {fileID: 11500000, guid: f0d14d14b2afa094abf28252f005805c, type: 3}
+  m_Name: OnXPGainedChannel
   m_EditorClassIdentifier: 
-  EnemiesToSpawn:
-  - enemyStats: {fileID: 11400000, guid: fa09e12303659fa449abd0fbba494a2b, type: 2}
-    count: 1
-  TimeBetweenSpawns: 0.5
-  TimeForNextWave: 10

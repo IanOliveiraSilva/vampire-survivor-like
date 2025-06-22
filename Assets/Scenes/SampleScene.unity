@@ -487,18 +487,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4423112005902490046, guid: 66d37130ea8471b44889c4c231eca2c3, type: 3}
-      propertyPath: m_Enabled
-      value: 1
+    - target: {fileID: 517545749893168046, guid: 66d37130ea8471b44889c4c231eca2c3, type: 3}
+      propertyPath: xpToNextLevel
+      value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 4423112005902490046, guid: 66d37130ea8471b44889c4c231eca2c3, type: 3}
-      propertyPath: startingWeapons.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4423112005902490046, guid: 66d37130ea8471b44889c4c231eca2c3, type: 3}
-      propertyPath: 'startingWeapons.Array.data[0]'
+    - target: {fileID: 4240406855605135726, guid: 66d37130ea8471b44889c4c231eca2c3, type: 3}
+      propertyPath: onLevelUpEvent
       value: 
-      objectReference: {fileID: 11400000, guid: f270c2e25fd252e44a6164cb141cf5ba, type: 2}
+      objectReference: {fileID: 11400000, guid: 7f95e62e3579f3749a5e42b1aaa99db1, type: 2}
+    - target: {fileID: 4240406855605135726, guid: 66d37130ea8471b44889c4c231eca2c3, type: 3}
+      propertyPath: onXpGainedChannel
+      value: 
+      objectReference: {fileID: 11400000, guid: 9e21a70ca8120984082eed8617ac2225, type: 2}
     - target: {fileID: 5807909045929222300, guid: 66d37130ea8471b44889c4c231eca2c3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -543,15 +543,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 6218071936579208414, guid: 66d37130ea8471b44889c4c231eca2c3, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6218071936579208414, guid: 66d37130ea8471b44889c4c231eca2c3, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4240406855605135726, guid: 66d37130ea8471b44889c4c231eca2c3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

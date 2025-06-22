@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 3271452781326547592}
   - component: {fileID: 2897587227007831671}
   - component: {fileID: 4423112005902490046}
+  - component: {fileID: 517545749893168046}
+  - component: {fileID: 4240406855605135726}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -125,7 +127,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c763c1f30ef931e4eb310930844b89da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingWeapons: []
+  startingWeapons:
+  - {fileID: 11400000, guid: f270c2e25fd252e44a6164cb141cf5ba, type: 2}
+--- !u!114 &517545749893168046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6218071936579208414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8757649e0dba5844b012669fb2d1efe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentLevel: 1
+  currentXp: 0
+  xpToNextLevel: 100
+  onLevelUpEvent: {fileID: 11400000, guid: 7f95e62e3579f3749a5e42b1aaa99db1, type: 2}
+  onXpGainedChannel: {fileID: 11400000, guid: 9e21a70ca8120984082eed8617ac2225, type: 2}
+--- !u!114 &4240406855605135726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6218071936579208414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8757649e0dba5844b012669fb2d1efe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentLevel: 1
+  currentXp: 0
+  xpToNextLevel: 5
+  onLevelUpEvent: {fileID: 11400000, guid: 7f95e62e3579f3749a5e42b1aaa99db1, type: 2}
+  onXpGainedChannel: {fileID: 11400000, guid: 9e21a70ca8120984082eed8617ac2225, type: 2}
 --- !u!1 &6263545081187250437
 GameObject:
   m_ObjectHideFlags: 0

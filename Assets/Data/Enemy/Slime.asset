@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Slime
   m_EditorClassIdentifier: 
   Sprite: {fileID: 4190962687993152763, guid: 2fa16309726cf9d4db5c4b6782a22a75, type: 3}
-  MaxHealth: 20
-  MoveSpeed: 2
-  contactDamage: 10
-  xpReward: 1
+  MaxHealth: 1
+  MoveSpeed: 1
+  contactDamage: 1
+  xpReward: 5
   enemyPrefab: {fileID: 2923422470046927030, guid: fdd56e9aeee187b488f27a8a77fafbb2, type: 3}
