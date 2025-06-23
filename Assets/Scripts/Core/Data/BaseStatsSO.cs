@@ -7,6 +7,7 @@ namespace Survivor.Core.Data
         [Header("Visuals")]
         public Sprite Sprite;
 
+        [Header("Stats")]
         public float MaxHealth = 100f;
         public float MoveSpeed = 5f;
     }

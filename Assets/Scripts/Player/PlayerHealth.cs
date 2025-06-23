@@ -4,16 +4,20 @@ using UnityEngine;
 
 namespace Survivor.Player
 {
-    public class PlayerHealth : MonoBehaviour
+    public class PlayerHealth : MonoBehaviour, IDamageable
     {
+        [SerializeField]
         private float currentHealth;
-        private float maxHealth;
 
+        [SerializeField]
         private PlayerStatsSO playerStats;
+
+        [SerializeField]
+        private Core.Events.FloatEventChannelSO healthChangedEvent;
 
         private void Awake()
         {
-            currentHealth = maxHealth;
+            currentHealth = playerStats.MaxHealth;
         }
 
         public void TakeDamage(float amount)
@@ -21,8 +25,11 @@ namespace Survivor.Player
             currentHealth -= amount;
             Debug.Log($"{gameObject.name} took {amount} damage. Health is now {currentHealth}");
 
+
+            UpdateHealthBar();
             if(currentHealth < 0)
             {
+                currentHealth = 0;
                 Die();
             }
         }
@@ -32,10 +39,12 @@ namespace Survivor.Player
             Destroy(gameObject);
         }
 
-        public void SetMaxHealth(float health)
+        private void UpdateHealthBar()
         {
-            maxHealth = health;
-            currentHealth = maxHealth;
+
+            float normalizedHealth = currentHealth / playerStats.MaxHealth;
+            healthChangedEvent.Raise(normalizedHealth);
+            Debug.Log($"Health changed: {currentHealth}");
         }
     }
 
