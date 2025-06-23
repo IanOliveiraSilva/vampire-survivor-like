@@ -148,4 +148,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   xpAmount: 5
+  attractionRadius: 0.6
+  moveSpeed: 2.5
   onXpGainedChannel: {fileID: 11400000, guid: f70eff96a851dd4469861e0b9a5b2871, type: 2}
