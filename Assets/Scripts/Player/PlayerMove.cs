@@ -4,12 +4,11 @@ namespace Survivor.Player
 {
     public class PlayerMove : MonoBehaviour
     {
-        [SerializeField]
-        private PlayerStatsSO playerStats;
-
         private Rigidbody2D rb2D;
         private PlayerControls playerControls;
         private Vector2 moveInput;
+
+        private float speed;
 
         private void Awake()
         {
@@ -35,7 +34,12 @@ namespace Survivor.Player
 
         private void FixedUpdate()
         {
-            rb2D.linearVelocity = moveInput.normalized * playerStats.MoveSpeed;
+            rb2D.linearVelocity = moveInput.normalized * speed;
+        }
+
+        public void SetSpeed(float _speed)
+        {
+            speed = _speed;
         }
     }
 }

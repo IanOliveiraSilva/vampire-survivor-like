@@ -7,7 +7,7 @@ namespace Survivor.Pickup
         public int xpAmount = 5;
 
         [SerializeField]
-        private Core.Events.IntEventChannelSO onXpGainedChannel;
+        private Core.Events.FloatEventChannelSO onXpGainedChannel;
 
         public void Initialize(int amout)
         {
