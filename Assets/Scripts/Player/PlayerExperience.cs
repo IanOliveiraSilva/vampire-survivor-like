@@ -4,13 +4,19 @@ namespace Survivor.Player
 {
     public class PlayerExperience : MonoBehaviour
     {
-        [SerializeField] private int currentLevel = 1;
-        [SerializeField] private int currentXp = 0;
-        [SerializeField] private int xpToNextLevel = 100;
+        [SerializeField] private float currentLevel = 1;
+        [SerializeField] private float currentXp = 0;
+        [SerializeField] private float xpToNextLevel = 100;
 
         [Header("Events")]
-        [SerializeField] private Core.Events.GameEvents onLevelUpEvent;
-        [SerializeField] private Core.Events.IntEventChannelSO onXpGainedChannel;
+        [SerializeField] private Core.Events.FloatEventChannelSO onLevelUpEvent;
+        [SerializeField] private Core.Events.FloatEventChannelSO onXpGainedChannel;
+        [SerializeField] private Core.Events.FloatEventChannelSO onXpUpdatedChannel;
+
+        private void Start()
+        {
+            UpdateXpBar();
+        }
 
         private void OnEnable()
         {
@@ -21,31 +27,40 @@ namespace Survivor.Player
             onXpGainedChannel.OnEventRaised -= GainXp;
         }
 
-        private void GainXp(int amount)
+        private void GainXp(float amount)
         {
-            currentXp = amount;
+            currentXp += amount;
             Debug.Log($"Ganhou {amount} XP. Total: {currentXp}/{xpToNextLevel}");
 
-            while(currentXp >= xpToNextLevel)
+            while (currentXp >= xpToNextLevel)
             {
                 LevelUp();
             }
+
+            UpdateXpBar();
         }
 
         private void LevelUp()
         {
-            currentLevel -= xpToNextLevel;
+            currentXp -= xpToNextLevel;
             currentLevel++;
             xpToNextLevel = CalculateNextLevelXp();
 
             Debug.Log($"LEVEL UP! Nível {currentLevel}.");
 
-            onLevelUpEvent.Raise();
+            onLevelUpEvent.Raise(currentLevel);
         }
 
         private int CalculateNextLevelXp()
         {
             return Mathf.FloorToInt(xpToNextLevel * 1.15f);
+        }
+
+        private void UpdateXpBar()
+        {
+            float normalizedXp = currentXp / xpToNextLevel;
+            onXpUpdatedChannel.Raise(normalizedXp);
+            Debug.Log($"XP Atualizado: {normalizedXp * 100}%");
         }
     }
 }

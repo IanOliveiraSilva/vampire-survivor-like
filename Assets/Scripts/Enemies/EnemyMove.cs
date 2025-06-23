@@ -33,4 +33,3 @@ namespace Survivor.Enemies
         }
     }
 }
-

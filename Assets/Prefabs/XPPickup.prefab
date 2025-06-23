@@ -148,4 +148,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   xpAmount: 5
-  onXpGainedChannel: {fileID: 11400000, guid: 9e21a70ca8120984082eed8617ac2225, type: 2}
+  onXpGainedChannel: {fileID: 11400000, guid: f70eff96a851dd4469861e0b9a5b2871, type: 2}

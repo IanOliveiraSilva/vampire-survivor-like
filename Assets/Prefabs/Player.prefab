@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 2897587227007831671}
   - component: {fileID: 4423112005902490046}
   - component: {fileID: 517545749893168046}
-  - component: {fileID: 4240406855605135726}
+  - component: {fileID: 8664758056225065889}
+  - component: {fileID: 4176629945188177372}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -114,7 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 689bb72c064d3354bb1f325998f0f789, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerStats: {fileID: 11400000, guid: 1675b39c42fa6ef41a83b965f42b010a, type: 2}
+  rb2D: {fileID: 8979334832783191501}
 --- !u!114 &4423112005902490046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,7 +147,7 @@ MonoBehaviour:
   xpToNextLevel: 100
   onLevelUpEvent: {fileID: 11400000, guid: 7f95e62e3579f3749a5e42b1aaa99db1, type: 2}
   onXpGainedChannel: {fileID: 11400000, guid: 9e21a70ca8120984082eed8617ac2225, type: 2}
---- !u!114 &4240406855605135726
+--- !u!114 &8664758056225065889
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -155,14 +156,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 6218071936579208414}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8757649e0dba5844b012669fb2d1efe, type: 3}
+  m_Script: {fileID: 11500000, guid: f2f21baf081638345971e2a142570eff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLevel: 1
-  currentXp: 0
-  xpToNextLevel: 5
-  onLevelUpEvent: {fileID: 11400000, guid: 7f95e62e3579f3749a5e42b1aaa99db1, type: 2}
-  onXpGainedChannel: {fileID: 11400000, guid: 9e21a70ca8120984082eed8617ac2225, type: 2}
+--- !u!114 &4176629945188177372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6218071936579208414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d0a0b112f2007841bc837b32af7b24b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerStats: {fileID: 11400000, guid: 1675b39c42fa6ef41a83b965f42b010a, type: 2}
 --- !u!1 &6263545081187250437
 GameObject:
   m_ObjectHideFlags: 0
