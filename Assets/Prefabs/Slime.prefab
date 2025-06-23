@@ -15,7 +15,8 @@ GameObject:
   - component: {fileID: 3687770519786087264}
   - component: {fileID: 94980534325525508}
   - component: {fileID: 448634462549506561}
-  m_Layer: 0
+  - component: {fileID: 2496126582075385525}
+  m_Layer: 8
   m_Name: Slime
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -149,7 +150,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -192,6 +193,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d89fccd208f39df4a9e34941e8a7c10c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyStats: {fileID: 11400000, guid: fa09e12303659fa449abd0fbba494a2b, type: 2}
+--- !u!114 &2496126582075385525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2923422470046927030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35c901c7501228e4da4b68756c2784da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemyStats: {fileID: 11400000, guid: fa09e12303659fa449abd0fbba494a2b, type: 2}

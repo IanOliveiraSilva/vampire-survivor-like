@@ -34,8 +34,6 @@ namespace Survivor.UI
         {
             slider.value = normalizedValue;
         }
-
-
     }
 }
 

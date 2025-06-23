@@ -26,7 +26,6 @@ namespace Survivor.Player
             if (playerStats == null) return;
 
             playerMove.SetSpeed(playerStats.MoveSpeed);
-            playerHealth.SetMaxHealth(playerStats.MaxHealth);
             spriteRenderer.sprite = playerStats.Sprite;
 
         }
