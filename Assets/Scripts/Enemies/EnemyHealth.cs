@@ -1,5 +1,7 @@
 using UnityEngine;
 using Survivor.Weapons;
+using Survivor.Enemies.Data;
+using Survivor.Pickup;
 
 namespace Survivor.Enemies
 {
@@ -7,6 +9,10 @@ namespace Survivor.Enemies
     {
         private float maxHealth = 50f; // Temporario
         private float currentHealth;
+        [SerializeField]
+        private EnemyStatsSO enemyStats;
+        [SerializeField]
+        private GameObject xpPickupPrefab;
 
         private void Awake()
         {
@@ -26,7 +32,11 @@ namespace Survivor.Enemies
 
         public void Die()
         {
-            Debug.Log($"{gameObject.name} has died.");
+            GameObject pickup = Instantiate(xpPickupPrefab, transform.position, Quaternion.identity);
+            if(pickup.TryGetComponent<XPPickup>(out var xpPickup))
+            {
+                xpPickup.Initialize(enemyStats.xpReward);
+            }
             Destroy(gameObject);
         }
 

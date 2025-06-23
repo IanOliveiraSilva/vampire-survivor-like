@@ -149,7 +149,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -168,6 +168,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b1a2bfb56a2a704b82ca128d81b6852, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyStats: {fileID: 11400000, guid: fa09e12303659fa449abd0fbba494a2b, type: 2}
+  xpPickupPrefab: {fileID: 1906385899832551201, guid: affc482545dcb674e90707f150af7c45, type: 3}
 --- !u!114 &94980534325525508
 MonoBehaviour:
   m_ObjectHideFlags: 0
