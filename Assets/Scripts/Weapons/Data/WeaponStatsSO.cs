@@ -13,10 +13,14 @@ namespace Survivor.Weapons.Data
         [Header("Stats")]
         public float Damage = 10f;
         public float FireRate = 1f;
+        public float Duration = 5f;
         public int ProjectileCount = 1;
         public float ProjectileSpeed = 10f;
 
         [Header("Assets")]
         public GameObject ProjectilePrefab;
+
+        [Header("Logic")]
+        public WeaponStrategy AttackStrategy;
     }
 }

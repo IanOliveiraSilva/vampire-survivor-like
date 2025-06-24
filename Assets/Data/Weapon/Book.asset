@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a175007f1581e43429d16557cccbb5e4, type: 3}
-  m_Name: Wand
+  m_Name: Book
   m_EditorClassIdentifier: 
-  Name: Wand
-  Description: Wand
-  Icon: {fileID: 912489153071483614, guid: b0c37f439704f124c9957372f0cad464, type: 3}
+  Name: Book
+  Description: Book
+  Icon: {fileID: -7848039375673857549, guid: b0c37f439704f124c9957372f0cad464, type: 3}
   Damage: 1
-  FireRate: 0.5
-  Duration: 2
+  FireRate: 0.27
+  Duration: 2.2
   ProjectileCount: 1
-  ProjectileSpeed: 2
-  ProjectilePrefab: {fileID: 8411582034581376598, guid: ee81fe02e437f08498f509a68393f14b, type: 3}
-  AttackStrategy: {fileID: 11400000, guid: 01d27607ab0463e4fb92325bf8c44028, type: 2}
+  ProjectileSpeed: 3
+  ProjectilePrefab: {fileID: 3290583837686528675, guid: a16584b4c94479144929534a661fbc26, type: 3}
+  AttackStrategy: {fileID: 11400000, guid: 3d93800ac52e7b24a8625dfa90cf4cdb, type: 2}

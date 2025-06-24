@@ -8,6 +8,8 @@ namespace Survivor.Enemies
     public class EnemyHealth : MonoBehaviour, IDamageable
     {
         private float maxHealth = 50f; // Temporario
+
+        [SerializeField]
         private float currentHealth;
         [SerializeField]
         private EnemyStatsSO enemyStats;

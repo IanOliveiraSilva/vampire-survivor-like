@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a175007f1581e43429d16557cccbb5e4, type: 3}
-  m_Name: Wand
+  m_Name: AuraStats
   m_EditorClassIdentifier: 
-  Name: Wand
-  Description: Wand
-  Icon: {fileID: 912489153071483614, guid: b0c37f439704f124c9957372f0cad464, type: 3}
+  Name: Aura
+  Description: Aura
+  Icon: {fileID: -783473721899508196, guid: ea9054cf0c52b1f4cbb4e1f3926d05e0, type: 3}
   Damage: 1
-  FireRate: 0.5
-  Duration: 2
+  FireRate: 1
+  Duration: 0.2
   ProjectileCount: 1
-  ProjectileSpeed: 2
-  ProjectilePrefab: {fileID: 8411582034581376598, guid: ee81fe02e437f08498f509a68393f14b, type: 3}
-  AttackStrategy: {fileID: 11400000, guid: 01d27607ab0463e4fb92325bf8c44028, type: 2}
+  ProjectileSpeed: 0.015
+  ProjectilePrefab: {fileID: 2949893187979914673, guid: 66099aac3d380cb41bb37eaccbc53938, type: 3}
+  AttackStrategy: {fileID: 11400000, guid: 0c0c2b69232f6c74d942356c83c647d4, type: 2}
