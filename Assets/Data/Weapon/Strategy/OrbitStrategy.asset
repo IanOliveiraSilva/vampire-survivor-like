@@ -9,11 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f97d90ffe1cddd94290c9800b47aff12, type: 3}
-  m_Name: Wave 1
+  m_Script: {fileID: 11500000, guid: 5de237206ac5f8446a5da78c729753cc, type: 3}
+  m_Name: OrbitStrategy
   m_EditorClassIdentifier: 
-  EnemiesToSpawn:
-  - enemyStats: {fileID: 11400000, guid: fa09e12303659fa449abd0fbba494a2b, type: 2}
-    count: 500
-  TimeBetweenSpawns: 0.1
-  TimeForNextWave: 10

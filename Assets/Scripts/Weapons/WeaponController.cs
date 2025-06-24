@@ -1,5 +1,6 @@
 using Survivor.Weapons.Data;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Survivor.Weapons
@@ -12,8 +13,12 @@ namespace Survivor.Weapons
         [SerializeField]
         private List<WeaponStatsSO> startingWeapons;
 
+        private int playerProjectileLayer;
+
         private void Awake()
         {
+            playerProjectileLayer = LayerMask.NameToLayer("PlayerProjectile");
+
             activeWeapons = new List<ActiveWeapon>();
             foreach (var weaponStats in startingWeapons)
             {
@@ -27,26 +32,28 @@ namespace Survivor.Weapons
                 weapon.Tick(Time.deltaTime);
                 if (weapon.CanAttack())
                 {
-                    Attack(weapon.Data);
+                    weapon.Data.AttackStrategy.Attack(transform, weapon.Data, playerProjectileLayer);
                 }
             }
         }
-        private void Attack(WeaponStatsSO weaponStats)
+        public void AddWeapon(WeaponStatsSO weaponData)
         {
-            if (weaponStats.ProjectilePrefab == null) return;
+            if (weaponData == null) return;
 
-            // Instancia o projétil na posição do jogador
-            GameObject projectile = Instantiate(weaponStats.ProjectilePrefab, transform.position, Quaternion.identity);
-
-            // Pega o componente Projectile e o inicializa com os dados da arma
-            if (projectile.TryGetComponent<Projectile>(out var _projectile))
-            {
-                // Por enquanto, todos os projéteis vão para a direita como exemplo
-                Vector2 direction = Vector2.right;
-                _projectile.Initialize(weaponStats.ProjectileSpeed, weaponStats.Damage, direction);
-            }
+            // Cria uma nova ActiveWeapon e a adiciona à lista
+            activeWeapons.Add(new ActiveWeapon(weaponData));
         }
 
+        // Método público para que outros scripts possam ver as armas atuais
+        public List<WeaponStatsSO> GetActiveWeaponStats()
+        {
+            List<WeaponStatsSO> statsList = new List<WeaponStatsSO>();
+            foreach (var weapon in activeWeapons)
+            {
+                statsList.Add(weapon.Data);
+            }
+            return statsList;
+        }
         private class ActiveWeapon
         {
             public WeaponStatsSO Data { get; }
@@ -65,9 +72,10 @@ namespace Survivor.Weapons
 
             public bool CanAttack()
             {
+                float cooldown = 1f / Data.FireRate;
                 if (timer >= 1f / Data.FireRate)
                 {
-                    timer = 0f;
+                    timer -= cooldown;
                     return true;
                 }
 
