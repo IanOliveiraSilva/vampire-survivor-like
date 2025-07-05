@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6037c78c4308c224db09fc67d90ef34f, type: 3}
+  m_Name: Flying Eye Boss
+  m_EditorClassIdentifier: 
+  MaxHealth: 5
+  MoveSpeed: 0.2
+  contactDamage: 20
+  attackCooldown: 1
+  xpReward: 0
+  isBoss: 1
+  enemyPrefab: {fileID: 1326406908067602223, guid: 62e6d472f836c914db7b1f916c2151dc, type: 3}

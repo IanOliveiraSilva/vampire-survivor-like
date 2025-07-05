@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: GameWeaponPool
   m_EditorClassIdentifier: 
   availableWeapons:
-  - {fileID: 11400000, guid: 1bdfab56e99157b45ba253b644ae7a91, type: 2}
+  - {fileID: 11400000, guid: eb44663485579dc44a533b8875f430ca, type: 2}
   - {fileID: 11400000, guid: e8a968d3284944845aac67d99060e14b, type: 2}
-  - {fileID: 11400000, guid: 70c2cd8e59c4b81468856285cc536b0f, type: 2}
+  - {fileID: 11400000, guid: 8c7826c9e45cfaa4ab215509bffb1a82, type: 2}
+  - {fileID: 11400000, guid: b482d9f528641f9408ed893e5848ddb1, type: 2}
+  - {fileID: 11400000, guid: d645c0d821c1ccc4eadf592638dc7c7b, type: 2}
+  - {fileID: 11400000, guid: 1cad940c1a284504a89d58d11c1aa358, type: 2}
+  - {fileID: 11400000, guid: 699a5cc4c6adc9c498887af46aedc57d, type: 2}

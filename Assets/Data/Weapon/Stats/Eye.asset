@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a175007f1581e43429d16557cccbb5e4, type: 3}
+  m_Name: Eye
+  m_EditorClassIdentifier: 
+  weaponName: Faca
+  icon: {fileID: -2511582887498265511, guid: 0dee72c4bf36f8942b8f21edc0b4a76f, type: 3}
+  description: "Proj\xE9til r\xE1pido que persegue o inimigo mais pr\xF3ximo."
+  attackSoundName: 
+  projectilePrefab: {fileID: 8411582034581376598, guid: ee81fe02e437f08498f509a68393f14b, type: 3}
+  baseDamage: 15
+  baseFireRate: 0.6
+  baseArea: 1
+  baseProjectileSpeed: 4
+  baseDuration: 10
+  baseProjectileCount: 1
+  upgradeLevels:
+  - description: "Dano: +15%; Velocidade de proj\xE9til: +10%; Velocidade de ataque:
+      +5%"
+    damageModifier: 0.15
+    fireRateModifier: 0.05
+    areaModifier: 0
+    projectileSpeedModifier: 0.1
+    durationModifier: 0
+    additionalProjectiles: 0
+  - description: "Dano: +20%; Velocidade de proj\xE9til: +15%; Velocidade de ataque:
+      +10%"
+    damageModifier: 0.2
+    fireRateModifier: 0.1
+    areaModifier: 0
+    projectileSpeedModifier: 0.15
+    durationModifier: 0
+    additionalProjectiles: 0
+  - description: "Dano: +25%; Velocidade de proj\xE9til: +20%; Velocidade de ataque:
+      +15%; +1 proj\xE9til"
+    damageModifier: 0.25
+    fireRateModifier: 0.15
+    areaModifier: 0
+    projectileSpeedModifier: 0.2
+    durationModifier: 0
+    additionalProjectiles: 1
+  - description: "Dano: +30%; Velocidade de proj\xE9til: +25%; Velocidade de ataque:
+      +20%; 2 proj\xE9teis"
+    damageModifier: 0.3
+    fireRateModifier: 0.2
+    areaModifier: 0
+    projectileSpeedModifier: 0.25
+    durationModifier: 0
+    additionalProjectiles: 2
+  - description: "Dano: +35%; Velocidade de proj\xE9til: +30%; Velocidade de ataque:
+      +25%; +1 proj\xE9til"
+    damageModifier: 0.35
+    fireRateModifier: 0.25
+    areaModifier: 0
+    projectileSpeedModifier: 0.3
+    durationModifier: 0
+    additionalProjectiles: 1
+  attackStrategy: {fileID: 11400000, guid: 01d27607ab0463e4fb92325bf8c44028, type: 2}

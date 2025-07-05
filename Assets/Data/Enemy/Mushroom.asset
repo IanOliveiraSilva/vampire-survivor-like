@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6037c78c4308c224db09fc67d90ef34f, type: 3}
+  m_Name: Mushroom
+  m_EditorClassIdentifier: 
+  MaxHealth: 10
+  MoveSpeed: 0.15
+  contactDamage: 15
+  attackCooldown: 2
+  xpReward: 10
+  isBoss: 0
+  MaxHealthBoss: 500
+  MoveSpeedBoss: 2.5
+  contactDamageBoss: 35
+  attackCooldownBoss: 1.2
+  enemyPrefab: {fileID: 2727603335038737952, guid: 839499ecc9be19747bd1caabedf1e250, type: 3}

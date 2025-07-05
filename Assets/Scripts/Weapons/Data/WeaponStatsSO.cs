@@ -1,26 +1,35 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Survivor.Weapons.Data
 {
-    [CreateAssetMenu(fileName="New Weapon Stats", menuName="Data/WeaponStats")]
+    [CreateAssetMenu(fileName = "New Weapon Stats", menuName = "Data/WeaponStats")]
     public class WeaponStatsSO : ScriptableObject
     {
-        [Header("Info")]
-        public string Name;
-        public string Description;
-        public Sprite Icon;
+        [Header("Informações Visuais")]
+        public string weaponName;
+        public Sprite icon;
+        [TextArea] public string description;
 
-        [Header("Stats")]
-        public float Damage = 10f;
-        public float FireRate = 1f;
-        public float Duration = 5f;
-        public int ProjectileCount = 1;
-        public float ProjectileSpeed = 10f;
+        [Header("Efeitos Sonoros")]
+        public string attackSoundName;
 
-        [Header("Assets")]
-        public GameObject ProjectilePrefab;
+        [Header("Atributos Básicos")]
+        public GameObject projectilePrefab;
 
-        [Header("Logic")]
-        public WeaponStrategy AttackStrategy;
+        public float baseDamage = 10f;
+        public float baseFireRate = 1f;
+        public float baseArea = 1f;
+        public float baseProjectileSpeed = 5f;
+        public float baseDuration = 3f;
+        public int baseProjectileCount = 1;
+
+        [Header("Modificadores de Nível")]
+        public List<WeaponUpgradeLevel> upgradeLevels = new List<WeaponUpgradeLevel>(4);
+
+        [Header("Estratégia de Ataque")]
+        public WeaponStrategy attackStrategy;
+
+
     }
 }

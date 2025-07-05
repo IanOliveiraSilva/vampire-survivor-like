@@ -8,6 +8,8 @@ namespace Survivor.Player
         [SerializeField] private float currentXp = 0;
         [SerializeField] private float xpToNextLevel = 100;
 
+        [SerializeField] private float XpGainModifier;
+
         [Header("Events")]
         [SerializeField] private Core.Events.FloatEventChannelSO onLevelUpEvent;
         [SerializeField] private Core.Events.FloatEventChannelSO onXpGainedChannel;
@@ -29,8 +31,8 @@ namespace Survivor.Player
 
         private void GainXp(float amount)
         {
-            currentXp += amount;
-            Debug.Log($"Ganhou {amount} XP. Total: {currentXp}/{xpToNextLevel}");
+            float xpGained = amount * (1f + XpGainModifier);
+            currentXp += xpGained;
 
             while (currentXp >= xpToNextLevel)
             {
@@ -40,13 +42,14 @@ namespace Survivor.Player
             UpdateXpBar();
         }
 
+
         private void LevelUp()
         {
+            AudioManager.Instance.PlaySFX("level_up");
+
             currentXp -= xpToNextLevel;
             currentLevel++;
             xpToNextLevel = CalculateNextLevelXp();
-
-            Debug.Log($"LEVEL UP! Nível {currentLevel}.");
 
             onLevelUpEvent.Raise(currentLevel);
         }
@@ -60,7 +63,11 @@ namespace Survivor.Player
         {
             float normalizedXp = currentXp / xpToNextLevel;
             onXpUpdatedChannel.Raise(normalizedXp);
-            Debug.Log($"XP Atualizado: {normalizedXp * 100}%");
+        }
+
+        public void SetXpGainModifier(float amount) 
+        {
+            XpGainModifier = amount;
         }
     }
 }

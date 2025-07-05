@@ -1,44 +1,100 @@
-using UnityEngine;
+﻿using UnityEngine;
 using Survivor.Weapons;
 using Survivor.Enemies.Data;
 using Survivor.Pickup;
+using System.Collections;
+using Survivor.Core.Events;
 
 namespace Survivor.Enemies
 {
     public class EnemyHealth : MonoBehaviour, IDamageable
     {
-        private float maxHealth = 50f; // Temporario
+        private float maxHealth = 50f; // Temporário
 
-        [SerializeField]
-        private float currentHealth;
-        [SerializeField]
-        private EnemyStatsSO enemyStats;
-        [SerializeField]
-        private GameObject xpPickupPrefab;
+        [SerializeField] private float currentHealth;
+
+        [SerializeField] private EnemyStatsSO enemyStats;
+
+        [SerializeField] private GameObject xpPickupPrefab;
+        [SerializeField] private GameObject floatingTextPrefab;
+        [SerializeField] private GameObject chestPrefab;
+
+        [SerializeField] private SpriteRenderer spriteRenderer;
+
+
+        private Color originalColor;
+        private Coroutine flashCoroutine;
+
+        [SerializeField] private IntEventChannelSO onEnemyDeathEvent;
 
         private void Awake()
         {
             currentHealth = maxHealth;
+
+            if (spriteRenderer == null)
+                spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+
+            originalColor = spriteRenderer.color;
         }
 
         public void TakeDamage(float amount)
         {
+            AudioManager.Instance.PlaySFX("enemy_hit");
             currentHealth -= amount;
-            Debug.Log($"{gameObject.name} took {amount} damage. Health is now {currentHealth}");
+            ShowDamageNumber(amount);
 
-            if( currentHealth <= 0)
+            FlashRed();
+
+            if (currentHealth <= 0)
             {
                 Die();
             }
         }
 
+        private void ShowDamageNumber(float damageAmount)
+        {
+            Vector3 spawnPos = transform.position + new Vector3(Random.Range(-0.5f, 0.5f), 0, 0);
+            GameObject textObj = Instantiate(floatingTextPrefab, spawnPos, Quaternion.identity);
+
+            textObj.transform.SetParent(null);
+
+            if(textObj.TryGetComponent<FloatingDamageText>(out var floatingDamageText))
+            {
+                floatingDamageText.Setup(damageAmount, Color.white);
+            }
+        }
+
+        private void FlashRed()
+        {
+            if (flashCoroutine != null)
+                StopCoroutine(flashCoroutine);
+
+            flashCoroutine = StartCoroutine(FlashCoroutine());
+        }
+
+        private IEnumerator FlashCoroutine()
+        {
+            spriteRenderer.color = Color.red;
+            yield return new WaitForSeconds(0.2f);
+            spriteRenderer.color = originalColor;
+        }
+
         public void Die()
         {
-            GameObject pickup = Instantiate(xpPickupPrefab, transform.position, Quaternion.identity);
-            if(pickup.TryGetComponent<XPPickup>(out var xpPickup))
+            if (enemyStats.isBoss)
             {
-                xpPickup.Initialize(enemyStats.xpReward);
+                GameObject chest = Instantiate(chestPrefab, transform.position, Quaternion.identity);
             }
+            else
+            {
+                GameObject pickup = Instantiate(xpPickupPrefab, transform.position, Quaternion.identity);
+                if (pickup.TryGetComponent<XPPickup>(out var xpPickup))
+                {
+                    xpPickup.Initialize(enemyStats.xpReward);
+                }
+            }
+            onEnemyDeathEvent?.Raise(1);
+
             Destroy(gameObject);
         }
 
@@ -48,6 +104,4 @@ namespace Survivor.Enemies
             currentHealth = maxHealth;
         }
     }
-
 }
-

@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a175007f1581e43429d16557cccbb5e4, type: 3}
+  m_Name: Acid
+  m_EditorClassIdentifier: 
+  weaponName: Acido
+  icon: {fileID: -5896744141208715869, guid: 9b47fcacdbb4a3f40abe4f24e6e42bc2, type: 3}
+  description: "Acido\t"
+  attackSoundName: 
+  projectilePrefab: {fileID: 2550412064947634628, guid: 45104ba2f3cfea540964a10c36341d64, type: 3}
+  baseDamage: 5
+  baseFireRate: 0.2
+  baseArea: 0.4
+  baseProjectileSpeed: 5
+  baseDuration: 1.5
+  baseProjectileCount: 1
+  upgradeLevels:
+  - description: 
+    damageModifier: 0
+    fireRateModifier: 0
+    areaModifier: 0
+    projectileSpeedModifier: 0
+    durationModifier: 0
+    additionalProjectiles: 0
+  - description: 
+    damageModifier: 0
+    fireRateModifier: 0
+    areaModifier: 0
+    projectileSpeedModifier: 0
+    durationModifier: 0
+    additionalProjectiles: 0
+  - description: 
+    damageModifier: 0
+    fireRateModifier: 0
+    areaModifier: 0
+    projectileSpeedModifier: 0
+    durationModifier: 0
+    additionalProjectiles: 0
+  - description: 
+    damageModifier: 0
+    fireRateModifier: 0
+    areaModifier: 0
+    projectileSpeedModifier: 0
+    durationModifier: 0
+    additionalProjectiles: 0
+  - description: 
+    damageModifier: 0
+    fireRateModifier: 0
+    areaModifier: 0
+    projectileSpeedModifier: 0
+    durationModifier: 0
+    additionalProjectiles: 0
+  attackStrategy: {fileID: 11400000, guid: 3019e501be99b3c44a4c3f0d21c07641, type: 2}

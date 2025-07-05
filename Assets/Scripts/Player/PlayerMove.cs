@@ -8,11 +8,14 @@ namespace Survivor.Player
         private PlayerControls playerControls;
         private Vector2 moveInput;
 
-        private float speed;
+        [SerializeField] private float speed;
+
+        private PlayerAnimation playerAnimation;
 
         private void Awake()
         {
             rb2D = GetComponent<Rigidbody2D>();
+            playerAnimation = GetComponent<PlayerAnimation>();
             playerControls = new PlayerControls();
         }
 
@@ -29,7 +32,8 @@ namespace Survivor.Player
         private void Update()
         {
             moveInput = playerControls.Player.Move.ReadValue<Vector2>();
-            Debug.Log(moveInput.normalized);
+            playerAnimation.UpdateAnimation(moveInput.normalized);
+
         }
 
         private void FixedUpdate()
@@ -41,6 +45,8 @@ namespace Survivor.Player
         {
             speed = _speed;
         }
+        public Vector2 CurrentMoveDirection => moveInput.normalized;
+
     }
 }
 
