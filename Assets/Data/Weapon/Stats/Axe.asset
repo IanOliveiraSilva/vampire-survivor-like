@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a175007f1581e43429d16557cccbb5e4, type: 3}
+  m_Name: Axe
+  m_EditorClassIdentifier: 
+  weaponName: Axe
+  icon: {fileID: 2594132989425597778, guid: 4c8df48c36a693d4f90aee685b71536f, type: 3}
+  description: "Lan\xE7a um machado pesado para o alto, causando dano nos inimigos
+    no caminho de ida e volta."
+  projectilePrefab: {fileID: 2443106733896637273, guid: 11962e34e014afe40b85d8e36b45ad88, type: 3}
+  baseDamage: 30
+  baseFireRate: 0.6
+  baseArea: 1.5
+  baseProjectileSpeed: 3
+  baseDuration: 5
+  baseProjectileCount: 1
+  upgradeLevels:
+  - description: "Dano: +12%; Ataque mais r\xE1pido: +5%; Dura\xE7\xE3o: +5%; \xC1rea:
+      +8%"
+    damageModifier: 0.12
+    fireRateModifier: 0.05
+    areaModifier: 0.08
+    projectileSpeedModifier: 0
+    durationModifier: 0.05
+    additionalProjectiles: 0
+  - description: "Dano: +18%; Ataque mais r\xE1pido: +8%; Dura\xE7\xE3o: +8%; \xC1rea:
+      +12%;"
+    damageModifier: 0.18
+    fireRateModifier: 0.08
+    areaModifier: 0.12
+    projectileSpeedModifier: 0
+    durationModifier: 0.08
+    additionalProjectiles: 0
+  - description: "Dano: +25%; Ataque mais r\xE1pido: +12%; Dura\xE7\xE3o: +12%; \xC1rea:
+      +18%;"
+    damageModifier: 0.25
+    fireRateModifier: 0.12
+    areaModifier: 0.18
+    projectileSpeedModifier: 0
+    durationModifier: 0.12
+    additionalProjectiles: 0
+  - description: "Dano: +32%; Ataque mais r\xE1pido: +15%; Dura\xE7\xE3o: +15%; \xC1rea:
+      +22%;"
+    damageModifier: 0.32
+    fireRateModifier: 0.15
+    areaModifier: 0.22
+    projectileSpeedModifier: 0
+    durationModifier: 0.15
+    additionalProjectiles: 0
+  - description: "Dano: +32%; Ataque mais r\xE1pido: +15%; Dura\xE7\xE3o: +15%; \xC1rea:
+      +22%;"
+    damageModifier: 0.32
+    fireRateModifier: 0.15
+    areaModifier: 0.22
+    projectileSpeedModifier: 0
+    durationModifier: 0.15
+    additionalProjectiles: 0
+  attackStrategy: {fileID: 11400000, guid: 02be88f77fa45af4080fccbe50d02b70, type: 2}

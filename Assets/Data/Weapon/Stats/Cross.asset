@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a175007f1581e43429d16557cccbb5e4, type: 3}
+  m_Name: Cross
+  m_EditorClassIdentifier: 
+  weaponName: Cruz
+  icon: {fileID: 3185874089565593972, guid: 0994db9176f8b534c94eb91587d2639a, type: 3}
+  description: "Uma cruz gira ao redor do jogador, causando dano a tudo que toca\t"
+  projectilePrefab: {fileID: 3290583837686528675, guid: a16584b4c94479144929534a661fbc26, type: 3}
+  baseDamage: 12
+  baseFireRate: 1
+  baseArea: 1
+  baseProjectileSpeed: 2
+  baseDuration: 5
+  baseProjectileCount: 1
+  upgradeLevels:
+  - description: "\tDano: +10%; Velocidade de ataque: +5%; Dura\xE7\xE3o: +10%"
+    damageModifier: 0.1
+    fireRateModifier: 0.05
+    areaModifier: 0
+    projectileSpeedModifier: 0
+    durationModifier: 0.1
+    additionalProjectiles: 0
+  - description: "Dano: +15%; Velocidade de ataque: +10%; Dura\xE7\xE3o: +15%"
+    damageModifier: 0.15
+    fireRateModifier: 0.1
+    areaModifier: 0
+    projectileSpeedModifier: 0
+    durationModifier: 0.15
+    additionalProjectiles: 0
+  - description: "Dano: +20%; Velocidade de ataque: +15%; Dura\xE7\xE3o: +20%; +1
+      proj\xE9til"
+    damageModifier: 0.2
+    fireRateModifier: 0.15
+    areaModifier: 0
+    projectileSpeedModifier: 0
+    durationModifier: 0.2
+    additionalProjectiles: 1
+  - description: "Dano: +25%; Velocidade de ataque: +20%; Dura\xE7\xE3o: +25%; 2
+      proj\xE9teis"
+    damageModifier: 0.25
+    fireRateModifier: 0.2
+    areaModifier: 0
+    projectileSpeedModifier: 0
+    durationModifier: 0.25
+    additionalProjectiles: 2
+  - description: "Dano: +30%; Velocidade de ataque: +25%; Dura\xE7\xE3o: +30%; +1
+      proj\xE9til"
+    damageModifier: 0.3
+    fireRateModifier: 0.25
+    areaModifier: 0
+    projectileSpeedModifier: 0
+    durationModifier: 0.3
+    additionalProjectiles: 1
+  attackStrategy: {fileID: 11400000, guid: 3d93800ac52e7b24a8625dfa90cf4cdb, type: 2}

@@ -10,13 +10,11 @@ namespace Survivor.Enemies
 
         private EnemyMove enemyMove;
         private EnemyHealth enemyHealth;
-        private SpriteRenderer spriteRenderer;
 
         private void Awake()
         {
             enemyMove = GetComponent<EnemyMove>();
             enemyHealth = GetComponent<EnemyHealth>();
-            spriteRenderer = GetComponent<SpriteRenderer>();
 
             Initialize();
         }
@@ -27,7 +25,6 @@ namespace Survivor.Enemies
 
             enemyMove.SetSpeed(enemyStats.MoveSpeed);
             enemyHealth.SetMaxHealth(enemyStats.MaxHealth);
-            spriteRenderer.sprite = enemyStats.Sprite;
 
         }
     }

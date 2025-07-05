@@ -47,7 +47,6 @@ namespace Survivor.WaveSpawner
         {
             Vector2 spawnPos = GetRandomSpawnPosition();
             Instantiate(enemyStats.enemyPrefab, spawnPos, Quaternion.identity);
-            Debug.Log($"Spawning {enemyStats.name} at {spawnPos}");
         }
 
         private Vector2 GetRandomSpawnPosition()

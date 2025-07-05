@@ -8,13 +8,13 @@ namespace Survivor.Pickup
         public int xpAmount = 5;
 
         [Header("Attraction Settings")]
-        [SerializeField] private float attractionRadius = 3f;
         [SerializeField] private float moveSpeed = 5f;
 
         [Header("Events")]
         [SerializeField] private Core.Events.FloatEventChannelSO onXpGainedChannel;
 
         private Transform playerTransform;
+        private Player.PlayerController playerController;
 
         public void Initialize(int amount)
         {
@@ -27,12 +27,15 @@ namespace Survivor.Pickup
             if (player != null)
             {
                 playerTransform = player.transform;
+                playerController = player.GetComponent<Player.PlayerController>();
             }
         }
 
         private void Update()
         {
-            if (playerTransform == null) return;
+            if (playerTransform == null || playerController == null) return;
+
+            float attractionRadius = playerController.GetRadiusCollect();
 
             float distance = Vector2.Distance(transform.position, playerTransform.position);
             if (distance < attractionRadius)
@@ -46,6 +49,7 @@ namespace Survivor.Pickup
         {
             if (other.CompareTag("Player"))
             {
+                AudioManager.Instance.PlaySFX("xp_collect");
                 onXpGainedChannel?.Raise(xpAmount);
                 Destroy(gameObject);
             }

@@ -12,8 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1382181100fb9ac45a332ac9a65fba3f, type: 3}
   m_Name: DefaultPlayerStats
   m_EditorClassIdentifier: 
-  Sprite: {fileID: 4723107735738678597, guid: 94a2eb427482ce144a63c32b5086b308, type: 3}
-  MaxHealth: 10
-  MoveSpeed: 3.5
+  MaxHealth: 0
+  MoveSpeed: 0
   DamageReduction: 0
-  XPGainModifier: 1
+  XPGain: 0
+  HealthRegen: 0
+  Damage: 0
+  CritChance: 0
+  Area: 0
+  AttackSpeed: 0
+  Duration: 0
+  ProjectileAmount: 0
+  CooldownReduction: 0
+  RadiusCollect: 0
+  Revival: 0

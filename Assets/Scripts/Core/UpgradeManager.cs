@@ -1,4 +1,7 @@
-using Survivor.Core.Events;
+ï»¿using Survivor.Core.Events;
+using Survivor.Player;
+using Survivor.Player.Data;
+using Survivor.Weapons;
 using Survivor.Weapons.Data;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,46 +9,66 @@ using UnityEngine;
 
 public class UpgradeManager : MonoBehaviour
 {
-    [Header("Configuração")]
+    [Header("ConfiguraÃ§Ã£o")]
     [SerializeField] private GameObject upgradePanel;
     [SerializeField] private UpgradeCardUI[] upgradeCards;
     [SerializeField] private WeaponPoolSO weaponPool;
+    [SerializeField] private PlayerUpgradeSO[] playerUpgrades;
+    [SerializeField] private FloatEventChannelSO onLevelUpEvent;
 
-    [SerializeField] private Survivor.Core.Events.FloatEventChannelSO onLevelUpEvent;
+    private WeaponController weaponController;
+    private RuntimePlayerStats runtimeStats;
 
-    private Survivor.Weapons.WeaponController weaponController;
-
-    private void Awake()
+    private void Start()
     {
-        weaponController = FindFirstObjectByType<Survivor.Weapons.WeaponController>();
+        weaponController = FindFirstObjectByType<WeaponController>();
+        runtimeStats = FindFirstObjectByType<PlayerController>().GetRuntimePlayerStats();
     }
 
     private void OnEnable()
     {
         onLevelUpEvent.OnEventRaised += HandleLevelUp;
-        UpgradeCardUI.OnUpgradeSelected += HandleUpgradeSelected;
+        UpgradeCardUI.OnWeaponUpgradeSelected += HandleWeaponUpgrade;
+        UpgradeCardUI.OnPlayerStatUpgradeSelected += HandleStatUpgrade;
     }
 
     private void OnDisable()
     {
         onLevelUpEvent.OnEventRaised -= HandleLevelUp;
-        UpgradeCardUI.OnUpgradeSelected -= HandleUpgradeSelected;
+        UpgradeCardUI.OnWeaponUpgradeSelected -= HandleWeaponUpgrade;
+        UpgradeCardUI.OnPlayerStatUpgradeSelected -= HandleStatUpgrade;
     }
 
     private void HandleLevelUp(float amount)
     {
         Time.timeScale = 0f;
-
-        List<WeaponStatsSO> options = GetRandomUpgrades(3);
-
         upgradePanel.SetActive(true);
+
+        var weaponOptions = GetAvailableWeaponUpgrades();
+        var statOptions = GetAvailableStatUpgrades();
+
+        var mixed = weaponOptions.Cast<object>()
+            .Concat(statOptions)
+            .OrderBy(_ => Random.value)
+            .Take(3)
+            .ToList();
 
         for (int i = 0; i < upgradeCards.Length; i++)
         {
-            if (i < options.Count)
+            if (i < mixed.Count)
             {
                 upgradeCards[i].gameObject.SetActive(true);
-                upgradeCards[i].Setup(options[i]);
+
+                if (mixed[i] is WeaponStatsSO weapon)
+                {
+                    var currentStats = weaponController.GetActiveWeapons().FirstOrDefault(w => w.BaseStats == weapon);
+                    upgradeCards[i].Setup(weapon, currentStats);
+                }
+                else if (mixed[i] is PlayerUpgradeSO stat)
+                {
+                    int currentLevel = runtimeStats.GetStatLevel(stat.statType);
+                    upgradeCards[i].Setup(stat, currentLevel);
+                }
             }
             else
             {
@@ -54,22 +77,46 @@ public class UpgradeManager : MonoBehaviour
         }
     }
 
-    private void HandleUpgradeSelected(WeaponStatsSO selectedWeapon)
+    private List<WeaponStatsSO> GetAvailableWeaponUpgrades()
     {
-        weaponController.AddWeapon(selectedWeapon);
+        var list = new List<WeaponStatsSO>();
+        var allWeapons = weaponPool.availableWeapons;
+        var activeStats = weaponController.GetActiveWeapons();
 
-        upgradePanel.SetActive(false);
+        foreach (var weapon in allWeapons)
+        {
+            var runtime = activeStats.FirstOrDefault(w => w.BaseStats == weapon);
+            if (runtime == null || runtime.CurrentLevel < weapon.upgradeLevels.Count)
+            {
+                list.Add(weapon);
+            }
+        }
 
-        Time.timeScale = 1f;
+        return list;
     }
 
-    private List<WeaponStatsSO> GetRandomUpgrades(int count)
+    private List<PlayerUpgradeSO> GetAvailableStatUpgrades()
     {
-        List<WeaponStatsSO> available = new List<WeaponStatsSO>(weaponPool.availableWeapons);
-        List<WeaponStatsSO> currentWeapons = weaponController.GetActiveWeaponStats();
+        return playerUpgrades
+            .Where(upg => runtimeStats.GetStatLevel(upg.statType) < 5)
+            .ToList();
+    }
 
-        available.RemoveAll(weapon => currentWeapons.Contains(weapon));
+    private void HandleWeaponUpgrade(WeaponStatsSO selected)
+    {
+        weaponController.AddOrUpgradeWeapon(selected);
+        ClosePanel();
+    }
 
-        return available.OrderBy(x => Random.value).Take(count).ToList();
+    private void HandleStatUpgrade(PlayerUpgradeSO selected)
+    {
+        runtimeStats.UpgradeStat(selected.statType);
+        ClosePanel();
+    }
+
+    private void ClosePanel()
+    {
+        upgradePanel.SetActive(false);
+        Time.timeScale = 1f;
     }
 }

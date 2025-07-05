@@ -1,68 +1,90 @@
-using Survivor.Weapons.Data;
+﻿using Survivor.Weapons.Data;
+using Survivor.Player;
 using System.Collections.Generic;
-using Unity.VisualScripting;
+using System.Linq;
 using UnityEngine;
 
 namespace Survivor.Weapons
 {
     public class WeaponController : MonoBehaviour
     {
-        [Header("Weapons")]
-        [SerializeField]
-        private List<ActiveWeapon> activeWeapons;
+        [Header("Starting Weapons")]
         [SerializeField]
         private List<WeaponStatsSO> startingWeapons;
 
+        private List<ActiveWeapon> activeWeapons = new List<ActiveWeapon>();
         private int playerProjectileLayer;
+        private PlayerMove playerMove;
 
         private void Awake()
         {
+            playerMove = GetComponent<PlayerMove>();
             playerProjectileLayer = LayerMask.NameToLayer("PlayerProjectile");
 
-            activeWeapons = new List<ActiveWeapon>();
             foreach (var weaponStats in startingWeapons)
             {
                 activeWeapons.Add(new ActiveWeapon(weaponStats));
             }
         }
+
         private void Update()
         {
             foreach (var weapon in activeWeapons)
             {
                 weapon.Tick(Time.deltaTime);
+
                 if (weapon.CanAttack())
                 {
-                    weapon.Data.AttackStrategy.Attack(transform, weapon.Data, playerProjectileLayer);
+                    weapon.RuntimeStats.CurrentMovementDirection = playerMove.CurrentMoveDirection;
+                    weapon.RuntimeStats.BaseStats.attackStrategy.Attack(transform, weapon.RuntimeStats, playerProjectileLayer);
                 }
             }
         }
-        public void AddWeapon(WeaponStatsSO weaponData)
-        {
-            if (weaponData == null) return;
 
-            // Cria uma nova ActiveWeapon e a adiciona � lista
-            activeWeapons.Add(new ActiveWeapon(weaponData));
+        public void AddNewWeapon(WeaponStatsSO newWeaponStats)
+        {
+            if (newWeaponStats == null) return;
+
+            activeWeapons.Add(new ActiveWeapon(newWeaponStats));
         }
 
-        // M�todo p�blico para que outros scripts possam ver as armas atuais
         public List<WeaponStatsSO> GetActiveWeaponStats()
         {
-            List<WeaponStatsSO> statsList = new List<WeaponStatsSO>();
-            foreach (var weapon in activeWeapons)
-            {
-                statsList.Add(weapon.Data);
-            }
-            return statsList;
+            
+            return activeWeapons.Select(w => w.RuntimeStats.BaseStats).ToList();
         }
-        private class ActiveWeapon
+
+        public void AddOrUpgradeWeapon(WeaponStatsSO weaponSO)
         {
-            public WeaponStatsSO Data { get; }
+            var existing = activeWeapons.FirstOrDefault(w => w.RuntimeStats.BaseStats == weaponSO);
+
+            if (existing != null)
+            {
+                existing.UpgradeLevel(); // Aumenta 1 nível, até 5
+            }
+            else
+            {
+                AddNewWeapon(weaponSO); // Novo RuntimeWeaponStats é criado e adicionado
+            }
+        }
+
+        public List<RuntimeWeaponStats> GetActiveWeapons()
+        {
+            return activeWeapons.Select(w => w.RuntimeStats).ToList();
+        }
+
+
+
+
+        public class ActiveWeapon
+        {
+            public RuntimeWeaponStats RuntimeStats { get; private set; }
             private float timer;
 
-            public ActiveWeapon(WeaponStatsSO data)
+            public ActiveWeapon(WeaponStatsSO weaponStats)
             {
-                Data = data;
-                timer = 1f / Data.FireRate;
+                RuntimeStats = new RuntimeWeaponStats(weaponStats);
+                timer = 1f / RuntimeStats.GetFireRate();
             }
 
             public void Tick(float deltaTime)
@@ -72,16 +94,25 @@ namespace Survivor.Weapons
 
             public bool CanAttack()
             {
-                float cooldown = 1f / Data.FireRate;
-                if (timer >= 1f / Data.FireRate)
+                float cooldown = 1f / RuntimeStats.GetFireRate();
+                if (timer >= cooldown)
                 {
                     timer -= cooldown;
                     return true;
                 }
-
                 return false;
+            }
+
+            public void UpgradeLevel()
+            {
+                RuntimeStats.UpgradeLevel();
+            }
+
+            // (Opcional) se você quiser comparar se a arma é a mesma
+            public WeaponStatsSO GetBaseStats()
+            {
+                return RuntimeStats.BaseStats;
             }
         }
     }
 }
-

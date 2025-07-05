@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a397661a329535740aed91d71f4663ee, type: 3}
+  m_Name: AttackSpeed
+  m_EditorClassIdentifier: 
+  statType: 9
+  icon: {fileID: 694433901511521280, guid: a9330e7019a4583419e1a428e703075a, type: 3}
+  statName: Attack Speed
+  levelDescriptions:
+  - Velocidade de ataque +5%
+  - Velocidade de ataque +10%
+  - Velocidade de ataque +15%
+  - Velocidade de ataque +20%
+  - Velocidade de ataque +25%
